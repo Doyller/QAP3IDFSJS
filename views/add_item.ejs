@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Want to add a new item?</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      h1 {
+        font-size: 36px;
+        font-weight: bold;
+        color: #007bff;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      label,
+      input {
+        display: block;
+        margin-bottom: 10px;
+        width: 100%;
+      }
+      input[type="text"],
+      input[type="number"] {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+      }
+      a {
+        background-color: #007bff;
+        color: #fff;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        text-decoration: none;
+        text-align: center;
+        display: block;
+      }
+      a:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Add New Item to our current menu!</h1>
+    <form method="post" action="/api/menuItems">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="description">Description</label>
+      <input type="text" id="description" name="description" required />
+
+      <label for="price">Price</label>
+      <input type="number" id="price" name="price" step="0.01" required />
+      <button type="submit">Save</button>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Martha's good eats! Current Menu Items</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      h1 {
+        font-size: 36px;
+        font-weight: bold;
+        color: #007bff;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      label,
+      input {
+        display: block;
+        margin-bottom: 10px;
+        width: 100%;
+      }
+      input[type="text"],
+      input[type="number"] {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+      }
+      button {
+        background-color: #007bff;
+        color: #fff;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        width: 100%;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      a {
+        color: #007bff;
+        text-decoration: none;
+        margin-right: 10px;
+        padding: 4px 8px;
+        border: 1px solid #007bff;
+        border-radius: 4px;
+      }
+      a:hover {
+        background-color: #007bff;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Martha's Good Eats! Check out our current menu items</h1>
+    <ul>
+      <% menuItems.forEach((item) => { %>
+      <li>
+        <h3><%= item.name %></h3>
+        <p><strong>Description:</strong> <%= item.description %></p>
+        <p><strong>Price:</strong> $<%= parseFloat(item.price).toFixed(2) %></p>
+
+        <a href="/menuItems/<%= item.id %>/edit_item">Edit</a>
+        <form
+          method="post"
+          action="/api/menuItems/<%= item.id %>?_method=DELETE"
+          style="display: inline"
+        >
+          <button type="submit">Delete</button>
+        </form>
+      </li>
+      <% }) %>
+    </ul>
+    <a href="/menuItems/add_item">Add New Item</a>
+  </body>
+</html>
